@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Suma Tutoring | Math & STEM Learning</title>
+  <meta name="description" content="Personalized math and STEM tutoring to help students build confidence and master problem solving." />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Fira+Code&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --navy: #0b1f3a;
+      --teal: #2dd4bf;
+      --white: #ffffff;
+      --gray: #f4f7f9;
+      --accent: #f59e0b;
+    }
+
+    /* Base */
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--navy);
+      background: var(--gray);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1; /* ensures main content pushes footer down */
+    }
+
+    /* Navbar */
+    .navbar {
+      background: var(--white);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .navbar-brand, .nav-link {
+      color: var(--navy) !important;
+      font-weight: 600;
+    }
+    .nav-link:hover {
+      color: var(--accent) !important;
+    }
+
+    /* Masthead */
+    header.masthead {
+      background: var(--navy) url("/assets/img/math-pattern.png") center/cover no-repeat;
+      color: var(--white);
+      text-align: center;
+      padding: 8rem 2rem;
+      position: relative;
+      z-index: 0; 
+    }
+    header.masthead::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(11,31,58,0.85);
+      z-index: 0; 
+    }
+    header .masthead-heading {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+    header .masthead-subheading {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: -50px;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100'><polygon fill='%23f4f7f9' points='0,100 100,0 100,100'/></svg>") bottom center no-repeat;
+      background-size: cover;
+    }
+
+    /* Sections */
+    section {
+      padding: 6rem 2rem;
+    }
+    .section-heading {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Cards */
+    .card {
+      border: none;
+      border-radius: 1rem;
+      background: var(--white);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card-body {
+      text-align: center;
+    }
+    .card h5 {
+      color: var(--navy);
+      margin-top: 1rem;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: var(--teal);
+      border: none;
+    }
+    .btn-primary:hover {
+      background: #24b3a6;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      color: var(--white);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* Subject Boxes */
+    .subject-box {
+      position: relative;
+      width: 280px;
+      height: 220px;
+      background: var(--teal);
+      color: white;
+      border-radius: 12px;
+      padding: 1rem;
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .subject-box:hover {
+      transform: scale(1.05);
+      z-index: 10;
+      overflow: visible;
+    }
+
+    .subject-box h5 {
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .subject-box .details {
+      margin-top: 0.75rem;
+      background: rgba(11, 31, 58, 0.95);
+      padding: 0.75rem;
+      border-radius: 8px;
+      max-height: 120px;
+      overflow-y: auto;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .subject-box:hover .details {
+      opacity: 1;
+    }
+
+    .subject-box ul {
+      padding-left: 1.2rem;
+      margin: 0;
+    }
+
+    .subject-box ul li {
+      list-style-type: disc;
+      margin-bottom: 0.5rem;
+    }
+
+    .subject-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .subject-box {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+      }
+      .subject-box .details {
+        max-height: 200px;
+        opacity: 1;
+      }
+    }
+
+    .subject-box .details::-webkit-scrollbar {
+      width: 6px;
+    }
+    .subject-box .details::-webkit-scrollbar-thumb {
+      background: var(--teal);
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="/assets/img/logo.png" alt="Suma Tutoring Logo" height="75">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#subjects">Subjects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#approach">Approach</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#prices">Prices</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Masthead -->
+    <header class="masthead">
+      <div class="hero-text" style="position: relative; z-index: 1;">
+        <h1 style="color: white; text-shadow: 2px 2px 6px rgba(0,0,0,0.8);">
+          Suma Tutoring: Sum Up Your Potential
+        </h1>
+        <p style="color: white; text-shadow: 1px 1px 4px rgba(0,0,0,0.7);">
+          Personalized remote one-on-one tutoring for all ages.
+        </p>
+        <a href="#contact" class="btn btn-primary">Book My Session</a>
+      </div>
+    </header>
+
+    <!-- Subjects Section -->
+    <section id="subjects">
+      <h2 class="section-heading">Subjects We Cover</h2>
+      <div class="container">
+        <div class="subject-container">
+          <div class="subject-box">
+            <h5>Spanish</h5>
+            <div class="details">
+              <p>Master Spanish with personalized lessons designed to build confidence, improve communication, and deepen understanding of grammar and vocabulary.</p>
+            </div>
+          </div>
+          <div class="subject-box">
+            <h5>STEM Courses</h5>
+            <div class="details">
+              <ul>
+                <li>Calculus</li>
+                <li>Physics</li>
+                <li>Probability</li>
+                <li>Intro to Python</li>
+                <li>Statistics</li>
+                <li>Geometry</li>
+                <li>Linear Algebra</li>
+                <li>Other STEM Courses</li>
+              </ul>
+            </div>
+          </div>
+          <div class="subject-box">
+            <h5>SAT Prep</h5>
+            <div class="details">
+              <p>Learn strategies to master different areas of the SAT test.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section id="approach" style="background: var(--white);">
+      <h2 class="section-heading">Approach</h2>
+      <div class="container text-center">
+        <p class="lead">At Suma Tutoring, the goal is to help students sum up their potential. Our personalized, one-on-one sessions focus on building confidence, mastering concepts, and turning challenges into achievements. Learning is tailored to each individual student’s pace and style.</p>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" style="background: var(--gray);">
+      <h2 class="section-heading">Testimonials</h2>
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card p-4">
+              <div class="card-body">
+                <p>"Suma Tutoring helped my son finally understand algebra. His confidence has skyrocketed!"</p>
+                <h6 class="mt-3">— Parent of 9th Grader</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card p-4">
+              <div class="card-body">
+                <p>"Kenny is such a knowledgeable and helpful tutor! He was always able to answer all of my specific questions, while also explaining the concepts to improve my conceptual understanding of the material as a whole. I learned how to take a very challenging question and break it down into smaller parts, so that I was able to grasp each concept. He was very encouraging and helped me gain more confidence as a student!"</p>
+                <h6 class="mt-3">— College Student</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card p-4">
+              <div class="card-body">
+                <p>"I like how problems are broken into steps—it makes math less overwhelming."</p>
+                <h6 class="mt-3">— High School Junior</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prices Section -->
+    <section id="prices">
+      <h2 class="section-heading">Pricing</h2>
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card p-4">
+              <div class="card-body">
+                <h5>Practice Exam Creation</h5>
+                <p>$50/exam – Personalized practice exam to provide extra practice before an exam. Tutors take into account style of specific class/problems assigned to students to curate these exams.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card p-4">
+              <div class="card-body">
+                <h5>One-on-One Tutoring</h5>
+                <p>$75/hr – Personalized attention for any math, STEM, or Spanish class. Go over homework problems, worksheets catered to each student, and prepare for tests.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card p-4">
+              <div class="card-body">
+                <h5>SAT Prep</h5>
+                <p>$75/hr – Assistance in any SAT section––writing, math, reading. Personalized score reports for each practice module done.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2 class="section-heading text-center">Get in Touch</h2>
+      <p class="lead text-center mb-5">Have questions or want to schedule a session? Fill out the form below.</p>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <form action="https://formsubmit.co/sumatutoring@gmail.com" method="POST">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_next" value="https://sumatutoring.github.io/thank-you.html">
+
+              <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="subject" class="form-label">Subject</label>
+                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Suma Tutoring. All rights reserved.</p>
+    <p>Based in the DMV (DC, Maryland, Virginia)</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
