@@ -201,90 +201,91 @@
       padding: 2rem;
       text-align: center;
     }
-
-   /* Subject Boxes */
-  .subject-box {
-    position: relative;
-    width: 280px;
-    height: 220px;
-    background: var(--teal);
-    color: white;
-    border-radius: 12px;
-    padding: 1rem;
-    cursor: pointer;
-    overflow: hidden;           /* keep content inside box */
-    transition: transform 0.2s ease;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  }
-
-  .subject-box:hover {
-    transform: scale(1.05);
-    z-index: 10;
-  }
-
-  .subject-box h5 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.3rem;
-    font-weight: bold;
-  }
-
-  .subject-box .details {
-    margin-top: 0.75rem;
-    background: rgba(11, 31, 58, 0.95);
-    padding: 0.75rem;
-    border-radius: 8px;
-    max-height: 120px;           /* fixed height for scroll */
-    overflow-y: auto;            /* show scrollbars if content exceeds */
-    opacity: 0;                  /* fade in on hover */
-    transition: opacity 0.3s ease;
-  }
-
-  .subject-box:hover .details {
-    opacity: 1;
-  }
-
-  .subject-box ul {
-    padding-left: 1.2rem;
-    margin: 0;
-  }
-
-  .subject-box ul li {
-    list-style-type: disc;
-    margin-bottom: 0.5rem;
-  }
-
-  .subject-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  /* Mobile */
-  @media (max-width: 768px) {
+    /* Subject Boxes */
     .subject-box {
-      width: 100%;
-      max-width: 500px;
-      height: auto;
+      position: relative;
+      width: 280px;
+      height: 220px;
+      background: var(--teal);
+      color: white;
+      border-radius: 12px;
+      padding: 1rem;
+      cursor: pointer;
+      overflow: hidden;           /* keep content inside box */
+      transition: transform 0.2s ease;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     }
-    .subject-box .details {
-      max-height: 200px;
-      opacity: 1;
-    }
-  }
 
-  /* Desktop */
-  @media (min-width: 769px) {
-    .subject-box .details {
-      max-height: 120px;         /* keep fixed height for scrolling */
-      overflow-y: auto;          /* ensure scrollbars */
-      opacity: 0;                /* fade in on hover */
+    .subject-box:hover {
+      transform: scale(1.05);
+      z-index: 10;
     }
+
+    .subject-box h5 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .subject-box .details {
+      margin-top: 0.75rem;
+      background: rgba(11, 31, 58, 0.95);
+      padding: 0.75rem;
+      border-radius: 8px;
+      max-height: 120px;          /* fixed height for desktop scrolling */
+      overflow-y: auto;           /* scrollbars if content exceeds */
+      opacity: 0;                 /* fade in on hover */
+      transition: opacity 0.3s ease;
+    }
+
     .subject-box:hover .details {
       opacity: 1;
     }
-  }
 
+    .subject-box ul {
+      padding-left: 1.2rem;
+      margin: 0;
+    }
+
+    .subject-box ul li {
+      list-style-type: disc;
+      margin-bottom: 0.5rem;
+    }
+
+    .subject-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .subject-box {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+      }
+      .subject-box .details {
+        max-height: 200px;        /* taller scrollable area for mobile */
+        overflow-y: auto;          /* ensure scrollbars */
+        opacity: 1;                /* always visible on mobile */
+      }
+    }
+
+    /* Desktop */
+    @media (min-width: 769px) {
+      .subject-box .details {
+        max-height: 120px;         /* keep fixed height for scrolling */
+        overflow-y: auto;          /* ensure scrollbars */
+        opacity: 0;                /* fade in on hover */
+      }
+      .subject-box:hover .details {
+        opacity: 1;
+      }
+    }
+
+    /* Scrollbar styling */
     .subject-box .details::-webkit-scrollbar {
       width: 6px;
     }
@@ -292,6 +293,7 @@
       background: var(--teal);
       border-radius: 6px;
     }
+
   </style>
 </head>
 <body>
