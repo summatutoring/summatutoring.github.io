@@ -1,0 +1,23 @@
+# robots.txt for Summa Tutoring
+# Allow all major search engines to index public pages
+User-agent: *
+Allow: /
+
+# Optional: reduce unnecessary crawling on GitHub Pages assets
+Disallow: /assets/private/
+Disallow: /drafts/
+Disallow: /tmp/
+Disallow: /README.md
+Disallow: /LICENSE
+
+# Crawl-delay helps reduce server strain (optional)
+Crawl-delay: 5
+
+# Block known scrapers or outdated bots
+User-agent: AhrefsBot
+Disallow: /
+User-agent: MJ12bot
+Disallow: /
+
+# Point to your sitemap for easy page discovery
+Sitemap: https://summatutoring.github.io/sitemap.xml
